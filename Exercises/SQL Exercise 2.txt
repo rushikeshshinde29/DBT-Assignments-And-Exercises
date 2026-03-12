@@ -1,0 +1,145 @@
+				SQL Exercise 2
+
+1. Display the Supplier table in the descending order of CITY.
+->
+mysql> select * from S
+    -> ORDER BY CITY desc;
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S2   | Jones |     10 | Paris  |
+| S3   | Blake |     30 | Paris  |
+| S1   | Smith |     20 | London |
+| S5   | Adams |     30 | London |
+| S4   | Clark |     20 | Athens |
++------+-------+--------+--------+
+5 rows in set (0.01 sec)
+
+
+
+2. Display the Part Table in the ascending order of CITY and within the city in the ascending order of Part names.
+->
+mysql> select * from P
+    -> ORDER BY city asc,Pname asc;
++------+-------+-------+--------+--------+
+| P#   | Pname | color | WEIGHT | CITY   |
++------+-------+-------+--------+--------+
+| P5   | Cog   | Blue  |     19 | Athens |
+| P4   | Cam   | Red   |     12 | London |
+| P1   | Nut   | Red   |     12 | London |
+| P2   | Bolt  | Green |     17 | Paris  |
+| P3   | Screw | Blue  |     14 | Rome   |
++------+-------+-------+--------+--------+
+5 rows in set (0.00 sec)
+
+
+
+
+
+3. Display all the Suppliers with a status between 10 and 20.
+->
+mysql> select * from S
+    -> WHERE status between 10 and 20;
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S1   | Smith |     20 | London |
+| S2   | Jones |     10 | Paris  |
+| S4   | Clark |     20 | Athens |
++------+-------+--------+--------+
+3 rows in set (0.00 sec)
+
+
+
+
+4. Display all the Parts and their Weight, which are not in the range of 10 and 15.
+->
+mysql> select Pname,weight from P
+    -> where weight not between 10 and 15;
++-------+--------+
+| Pname | weight |
++-------+--------+
+| Bolt  |     17 |
+| Cog   |     19 |
++-------+--------+
+2 rows in set (0.00 sec)
+
+
+
+5. Display all the Part names starting with the letter ‘S’.
+->
+mysql> select pname from P
+    -> where Pname like 'S%';
++-------+
+| pname |
++-------+
+| Screw |
++-------+
+1 row in set (0.01 sec)
+
+
+
+6. Display all the Suppliers, belonging to cities starting with the letter ‘L’.
+->
+mysql> select * from S
+    -> where city like 'L%';
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S1   | Smith |     20 | London |
+| S5   | Adams |     30 | London |
++------+-------+--------+--------+
+2 rows in set (0.00 sec)
+
+
+
+7. Display all the Projects, with the third letter in JNAME as ‘n’.
+->
+mysql> select * from J
+    -> WHERE JNAME LIKE '__n%';
+Empty set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,384 @@
+			SQL Exercise 1
+
+
+1. Create the table SEMP with the following structure:-
+
+EMPNO CHAR(4)
+EMPNAME CHAR(20)
+BASIC FLOAT
+DEPTNO CHAR(2)
+DEPTHEAD CHAR(4)
+
+->
+
+CREATE TABLE SEMP (
+EMPNO CHAR(4),
+EMPNAME CHAR(20),
+BASIC FLOAT,
+DEPTNO CHAR(2),
+DEPTHEAD CHAR(4)
+);
+
+
+2. Create the table SDEPT with the following structure:-
+DEPTNO CHAR(2)
+DEPTNAME CHAR(15)
+
+->
+CREATE TABLE SDEPT (
+DEPTNO CHAR(2),
+DEPTNAME CHAR(15)
+);
+
+3. Insert into the SDEPT table the following values:-
+10, Development
+20, Training
+
+->
+
+INSERT INTO SDEPT (DEPTNO,DEPTNAME)
+VALUES
+(10, 'Development'),
+(20, 'Training');
+
+mysql> SELECT * FROM SDEPT;
++--------+-------------+
+| DEPTNO | DEPTNAME    |
++--------+-------------+
+| 10     | Development |
+| 20     | Training    |
++--------+-------------+
+2 rows in set (0.01 sec)
+
+
+4. Insert into the SEMP table the following values:-
+0001, SUNIL, 6000, 10
+0002, HIREN, 8000, 20
+0003, ALI, 4000, 10, 0001
+0004, GEORGE, 6000, 0002
+
+->
+
+INSERT INTO SEMP (EMPNO,EMPNAME,BASIC,DEPTNO,DEPTHEAD)
+VALUES
+('0001', 'SUNIL', 6000, '10',NULL),
+('0002', 'HIREN', 8000, '20',NULL),
+('0003', 'ALI', 4000, '10', '0001'),
+('0004', 'GEORGE', '6000',NULL,'0002');
+
+
+mysql> select * from SEMP;
++-------+---------+-------+--------+----------+
+| EMPNO | EMPNAME | BASIC | DEPTNO | DEPTHEAD |
++-------+---------+-------+--------+----------+
+| 0001  | SUNIL   |  6000 | 10     | NULL     |
+| 0002  | HIREN   |  8000 | 20     | NULL     |
+| 0003  | ALI     |  4000 | 10     | 0001     |
+| 0004  | GEORGE  |  6000 | NULL   | 0002     |
++-------+---------+-------+--------+----------+
+4 rows in set (0.03 sec)
+
+
+5.Create S, P, J, SPJ tables as specified below and insert a few rows in each table:-
+
+A] SUPPLIER- (S#, Sname, Status, City)
+
+create table S (
+	`S#` CHAR(4),
+	SNAME VARCHAR(20),
+	STATUS INT,
+	CITY VARCHAR(20)
+);
+
+INSERT INTO S VALUES
+('S1','Smith',20,'London'),
+('S2','Jones',10,'Paris'),
+('S3','Blake',30,'Paris'),
+('S4','Clark',20,'Athens'),
+('S5','Adams',30,'London');
+
+
+
+mysql> SELECT * FROM S;
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S1   | Smith |     20 | London |
+| S2   | Jones |     10 | Paris  |
+| S3   | Blake |     30 | Paris  |
+| S4   | Clark |     20 | Athens |
+| S5   | Adams |     30 | London |
++------+-------+--------+--------+
+5 rows in set (0.01 sec)
+
+
+
+
+
+B] PARTS- (P#, Pname, Color, Weight, City)
+
+CREATE TABLE P(
+	`P#` CHAR(2),
+	Pname VARCHAR(20),
+	color VARCHAR(20),
+	WEIGHT INT,
+	CITY VARCHAR(20)
+);
+
+INSERT INTO P VALUES
+('P1','Nut','Red',12,'London'),
+('P2','Bolt','Green',17,'Paris'),
+('P3','Screw','Blue',14,'Rome'),
+('P4','Cam','Red',12,'London'),
+('P5','Cog','Blue',19,'Athens');
+
+
+mysql> SELECT * FROM P;
++------+-------+-------+--------+--------+
+| P#   | Pname | color | WEIGHT | CITY   |
++------+-------+-------+--------+--------+
+| P1   | Nut   | Red   |     12 | London |
+| P2   | Bolt  | Green |     17 | Paris  |
+| P3   | Screw | Blue  |     14 | Rome   |
+| P4   | Cam   | Red   |     12 | London |
+| P5   | Cog   | Blue  |     19 | Athens |
++------+-------+-------+--------+--------+
+5 rows in set (0.00 sec)
+
+
+
+
+
+C] PROJECTS- (J#, Jname, City)
+
+CREATE TABLE J(
+	`J#` CHAR(2),
+	Jname VARCHAR(20),
+	City VARCHAR(20)
+);
+
+
+INSERT INTO J VALUES
+('J1','Sorter','Paris'),
+('J2','Display','Athens'),
+('J3','OCR','Rome');
+
+
+mysql> SELECT * FROM J;
++------+---------+--------+
+| J#   | Jname   | City   |
++------+---------+--------+
+| J1   | Sorter  | Paris  |
+| J2   | Display | Athens |
+| J3   | OCR     | Rome   |
++------+---------+--------+
+3 rows in set (0.00 sec)
+
+
+
+
+
+D] SUPPLIER-PARTS-PROJECT- (S#, P#, J#, Qty)
+
+CREATE TABLE SPJ(
+	`S#` CHAR(2),
+	`P#` CHAR(2),
+	`J#` CHAR(2),
+	QTY INT
+);
+
+INSERT INTO SPJ VALUES
+('S1','P1','J1',200),
+('S2','P2','J2',100),
+('S3','P3','J3',400),
+('S4','P4','J1',200);
+
+
+mysql> SELECT * FROM SPJ;
++------+------+------+------+
+| S#   | P#   | J#   | QTY  |
++------+------+------+------+
+| S1   | P1   | J1   |  200 |
+| S2   | P2   | J2   |  100 |
+| S3   | P3   | J3   |  400 |
+| S4   | P4   | J1   |  200 |
++------+------+------+------+
+4 rows in set (0.00 sec)
+
+
+
+
+Write the SELECT queries to do the following:-
+5. Display all the data from the S table.
+-> 
+mysql> SELECT * FROM S;
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S1   | Smith |     20 | London |
+| S2   | Jones |     10 | Paris  |
+| S3   | Blake |     30 | Paris  |
+| S4   | Clark |     20 | Athens |
+| S5   | Adams |     30 | London |
++------+-------+--------+--------+
+5 rows in set (0.01 sec)
+
+
+    
+6. Display only the S# and SNAME fields from the S table.
+->
+mysql> select `S#`,sname from S;
++------+-------+
+| S#   | sname |
++------+-------+
+| S1   | Smith |
+| S2   | Jones |
+| S3   | Blake |
+| S4   | Clark |
+| S5   | Adams |
++------+-------+
+5 rows in set (0.00 sec)
+
+
+
+
+7. Display the PNAME and COLOR from the P table for the CITY=”London”.
+->
+mysql> SELECT Pname,color from P
+    ->  where city ='London' ;
++-------+-------+
+| Pname | color |
++-------+-------+
+| Nut   | Red   |
+| Cam   | Red   |
++-------+-------+
+2 rows in set (0.00 sec)
+
+
+
+8. Display all the Suppliers from London.
+->mysql> select * from S
+    -> where City ='London';
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S1   | Smith |     20 | London |
+| S5   | Adams |     30 | London |
++------+-------+--------+--------+
+2 rows in set (0.01 sec)
+
+
+
+9. Display all the Suppliers from Paris or Athens.
+->
+mysql> select * from S
+    -> where city in('Paris','Athens');
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S2   | Jones |     10 | Paris  |
+| S3   | Blake |     30 | Paris  |
+| S4   | Clark |     20 | Athens |
++------+-------+--------+--------+
+3 rows in set (0.00 sec)
+
+
+
+10. Display all the Projects in Athens.
+->
+mysql> select * from J
+    -> WHERE CITY ='Athens';
++------+---------+--------+
+| J#   | Jname   | City   |
++------+---------+--------+
+| J2   | Display | Athens |
++------+---------+--------+
+1 row in set (0.00 sec)
+
+
+
+11. Display all the Partnames with the weight between 12 and 14 (inclusive of both)
+->
+mysql> select pname from P
+    -> Where weight between 12 and 14;
++-------+
+| pname |
++-------+
+| Nut   |
+| Screw |
+| Cam   |
++-------+
+
+
+
+12. Display all the Suppliers with a Status greater than or equal to 20.
+->
+mysql> select * from S
+    -> where status >=20;
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S1   | Smith |     20 | London |
+| S3   | Blake |     30 | Paris  |
+| S4   | Clark |     20 | Athens |
+| S5   | Adams |     30 | London |
++------+-------+--------+--------+
+4 rows in set (0.00 sec)
+
+
+
+
+13. Display all the Suppliers except the Suppliers from London.
+->
+mysql> select * from S
+    -> where city not in ('London');
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S2   | Jones |     10 | Paris  |
+| S3   | Blake |     30 | Paris  |
+| S4   | Clark |     20 | Athens |
++------+-------+--------+--------+
+3 rows in set (0.01 sec)
+
+
+
+14. Display only the Cities from where the Suppliers come from.
+->
+mysql> select distinct city from S;
++--------+
+| city   |
++--------+
+| London |
+| Paris  |
+| Athens |
++--------+
+3 rows in set (0.02 sec)
+
+
+
+15. Assuming that the Part Weight is in GRAMS, display the same in MILLIGRAMS and KILOGRAMS.
+->
+
+mysql> select pname,weight as grams,
+    -> weight*1000 as milligrams,
+    -> weight/1000 as kilograms
+    -> from p;
++-------+-------+------------+-----------+
+| pname | grams | milligrams | kilograms |
++-------+-------+------------+-----------+
+| Nut   |    12 |      12000 |    0.0120 |
+| Bolt  |    17 |      17000 |    0.0170 |
+| Screw |    14 |      14000 |    0.0140 |
+| Cam   |    12 |      12000 |    0.0120 |
+| Cog   |    19 |      19000 |    0.0190 |
++-------+-------+------------+-----------+
+5 rows in set (0.01 sec)
+
+
+
+
+
+
+
+
