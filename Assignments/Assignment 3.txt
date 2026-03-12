@@ -1,0 +1,12 @@
+
+                               Assignment –3
+                              Overview of SQL.
+							  
+1) Does ANSI recognize the data type DATE?
+->
+   Yes,ANSI Recognize the DATE datatype for storing date values in yyyy-mm-dd format.
+
+2) Which subdivision of SQL is used to insert values in tables?
+-> 
+	THE subdivision Of sql is used to insert the values in tables is
+	DML- Data Manipulation Language which include INSERT,UPDATE,DELETE,SELECT .
